@@ -18,7 +18,7 @@ const html = `
     <p>Text</p>
     <p>Text</p>
     <p>Text</p>
-    <div id='message'>
+    <div data-id='message'>
     <p>Text</p>
     <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png">
     <p>Text</p>
@@ -66,7 +66,7 @@ const handleLinkAttachments = async (fileUrl) => {
   const $ = cheerio.load(html);
 
   let attachmentsSrc = [];
-  $("#message > img").each(async function () {
+  $("div[data-id='message'] > img").each(async function () {
     const src = $(this).attr("src");
     console.log({ src });
     attachmentsSrc.push(src);
@@ -86,7 +86,7 @@ const handleLinkAttachments = async (fileUrl) => {
     })
   );
 
-  $("#message > img").remove();
+  $("div[data-id='message'] > img").remove();
 
   console.log($.html());
 
