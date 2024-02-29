@@ -16,7 +16,16 @@ const html = `
     AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
         9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
     <p>Text</p>
+    <p>Text</p>
+    <p>Text</p>
+    <div id='message'>
+    <p>Text</p>
     <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png">
+    <p>Text</p>
+    </div>
+    <p>Text</p>
+    <p>Text</p>
+    <p>Text</p>
 </body>
 
 </html>
@@ -57,7 +66,7 @@ const handleLinkAttachments = async (fileUrl) => {
   const $ = cheerio.load(html);
 
   let attachmentsSrc = [];
-  $("img").each(async function () {
+  $("#message > img").each(async function () {
     const src = $(this).attr("src");
     console.log({ src });
     attachmentsSrc.push(src);
@@ -77,7 +86,7 @@ const handleLinkAttachments = async (fileUrl) => {
     })
   );
 
-  $("img").remove();
+  $("#message > img").remove();
 
   console.log($.html());
 
